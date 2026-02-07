@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine Alagi ? 💖</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #df9aff, #fad0c4);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header { padding: 50px 20px 30px; }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: clamp(1rem, 3.5vw, 1.2rem);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      padding: 30px 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    .question { padding: 40px 20px 60px; }
+
+    button {
+      background: #fff;
+      color: #ff5f7e;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.05rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.35s ease;
+    }
+
+    button:hover {
+      background: #ff5f7e;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* 💗 3D HEART */
+    .heart3d-wrapper {
+      perspective: 1600px;
+      margin: 40px auto;
+    }
+
+    .heart3d {
+      font-size: 140px;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(.17,.67,.32,1.4),
+                  font-size 0.7s ease,
+                  filter 0.7s ease;
+      user-select: none;
+      filter:
+        drop-shadow(0 25px 35px rgba(0,0,0,0.35))
+        drop-shadow(0 0 25px rgba(255,90,120,0.45));
+    }
+
+    .heart3d.active {
+      transform:
+        rotateX(35deg)
+        rotateY(220deg)
+        rotateZ(8deg)
+        scale(1.25);
+      font-size: 190px;
+      filter:
+        drop-shadow(0 35px 45px rgba(0,0,0,0.45))
+        drop-shadow(0 0 45px rgba(255,70,110,0.8));
+    }
+
+    .memory-text {
+      font-size: 1rem;
+      opacity: 0;
+      margin-top: 15px;
+      transition: opacity 0.6s ease;
+    }
+
+    /* 💕 FLOATING EMOJIS */
+    .floating {
+      position: fixed;
+      bottom: -30px;
+      font-size: 22px;
+      pointer-events: none;
+      animation: floatUp 6s linear forwards;
+      opacity: 0.9;
+      z-index: 999;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-110vh) scale(1.6) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .love-page {
+      display: none;
+      padding: 60px 20px;
+      animation: fadeIn 1.2s ease;
+    }
+
+    footer {
+      padding: 20px;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .gallery img { height: 220px; }
+      .heart3d { font-size: 110px; }
+      .heart3d.active { font-size: 160px; }
+    }
+
+    /* 💌 Love Card */
+.love-card {
+  max-width: 680px;
+  margin: 40px auto 0;
+  padding: 35px 30px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #fff;
+  animation: fadeIn 1.5s ease;
+}
+
+.love-card .signature {
+  margin-top: 25px;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ❤️ Heartbeat Audio -->
+  <audio id="heartbeatSound" loop>
+    <source src="heartbeat.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="mainContent">
+    <header>
+      <h1>Alagi maa ❤️</h1>
+      <p>
+        Every smile, every laugh, every little moment with you is my favorite memory.
+        I’m not perfect, but my love for you is real, deep, and endlessly yours.
+      </p>
+    </header>
+
+    <section class="gallery">
+      <img src="photo1.jpg">
+      <img src="photo2.jpg">
+      <img src="photo3.jpg">
+      <img src="photo4.jpg">
+    </section>
+
+    <section class="question">
+      <h1>Will You Be My Valentine? 💘</h1>
+
+      <div class="heart3d-wrapper">
+        <div class="heart3d" onclick="heartTouched()">❤️</div>
+        <div class="memory-text" id="heartHint" style="opacity:1;">
+          Touch me to feel my heart ❤️
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button onclick="yesClicked()">YES 💖</button>
+        <button id="noBtn" onmouseenter="noApproach()">NO 🙈</button>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="love-page" id="lovePage">
+  <h1>There Is No Other Option for You ❤️</h1>
+
+  <div class="love-card">
+    <p>
+      I may have played a little trick on you,
+      but the truth is there was never really another choice.
+    </p>
+
+    <p>
+      Over these past days, my heart has found the happiness.
+      All I wish for is that we remain the same... honest, close, and choosing each other.
+      I know there is still uncertainty, chaos, and many questions about the future,
+      but through all of that, the only thing I am sure of is "you".
+    </p>
+
+    <p>
+      I believe, I hope, and I am certain that we will grow, succeed, and move forward together 
+      making this year, and all the years to come,
+      more meaningful, more loving, and filled with memories we’ll always cherish.
+    </p>
+
+    <p>
+      This isn’t just a Valentine’s question.
+      It’s about you and me choosing each other every single day.
+    </p>
+
+    <div class="signature">
+      — Yours, alagii ❤️
+    </div>
+  </div>
+</div>
+
+
+
+  <footer>
+    Just for you my Thangapillaa💗
+  </footer>
+
+  <script>
+    let noCount = 0;
+    let heartbeatStarted = false;
+
+    function heartTouched() {
+      const heart = document.querySelector('.heart3d');
+      const hint = document.getElementById('heartHint');
+      const audio = document.getElementById('heartbeatSound');
+
+      heart.classList.toggle('active');
+
+      if (!heartbeatStarted) {
+        audio.volume = 1;
+        audio.currentTime = 0;
+        audio.play().then(() => {
+          heartbeatStarted = true;
+          hint.style.opacity = 0;
+        }).catch(() => {});
+      }
+    }
+
+    function noApproach() {
+      const btn = document.getElementById('noBtn');
+      const memory = document.getElementById('memoryText');
+
+      memory.style.opacity = 1;
+      noCount++;
+
+      if (noCount === 1) btn.innerText = 'N…';
+      if (noCount === 2) btn.innerText = 'Okay maybe… 😶';
+      if (noCount === 3) btn.innerText = 'My heart knows ❤️';
+
+      if (noCount >= 4) {
+        setTimeout(timeTravel, 600);
+      }
+    }
+
+    function yesClicked() {
+      timeTravel();
+    }
+
+    function timeTravel() {
+      const audio = document.getElementById('heartbeatSound');
+      audio.pause();
+      audio.currentTime = 0;
+      document.getElementById('mainContent').style.display = 'none';
+      document.getElementById('lovePage').style.display = 'block';
+    }
+
+    /* 💖 Floating hearts + kisses */
+    setInterval(() => {
+      const el = document.createElement('div');
+      el.className = 'floating';
+      const emojis = ['💖', '💘', '❤️', '😘', '💋'];
+      el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (18 + Math.random() * 18) + 'px';
+      el.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }, 500);
+  </script>
+
+</body>
+</html>
